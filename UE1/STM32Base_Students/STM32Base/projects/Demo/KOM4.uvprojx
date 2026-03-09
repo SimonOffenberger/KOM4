@@ -545,9 +545,9 @@
               <FilePath>..\..\system\board\i2c.c</FilePath>
             </File>
             <File>
-              <FileName>Board_MCP_Temp.c</FileName>
+              <FileName>board_MCP_temp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\system\board\Board_MCP_Temp.c</FilePath>
+              <FilePath>..\..\system\board\board_MCP_temp.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -25,87 +25,65 @@
 }
 
 \begin{document}
-\includepdf[pages={1}] {MPT3_Uebung_8_Deckblatt.pdf}
+\includepdf[pages={1}] {KOM4_Uebung_1_Deckblatt.pdf}
 \newpage
 \section{Fragen}
-\subsection{Wie würde eine Auswertung der ADC-Werte im Continuous Mode in Software ablaufen?}
-Hierbei müsste in der Configuration der Continous Mode aktiviert werden. Danach könnte in der Hauptschleife des Programms immer wieder geprüft werden, ob ein neuer ADC-Wert vorliegt (z.B. über das EOC-Flag). Wenn ja, wird der Wert aus dem ADC-Datenregister gelesen und ausgewertet. Da der ADC im Continuous Mode ständig neue Werte liefert, würde diese Schleife kontinuierlich laufen und der ADC müsste nicht neugestartet werden.
-\subsection{Wozu kann der ADC Watchdog verwendet werden?}
-Der ADC Watchdog kann verwendet werden, um den ADC-Wert kontinuierlich zu überwachen und sicherzustellen, dass er innerhalb eines vordefinierten Bereichs bleibt. Wenn der ADC-Wert außerhalb dieses Bereichs liegt, kann der Watchdog einen Interrupt auslösen oder eine andere Aktion initiieren. Dies ist besonders nützlich für Anwendungen, bei denen es wichtig ist, bestimmte Grenzwerte nicht zu überschreiten, wie z.B. bei der Überwachung von Sensorwerten in sicherheitskritischen Systemen.
-\newpage
-\section{Quellcode}
-In der Initialisierungsfunktion des ADCs wurde besonders auf die Einhaltung der richtigen Registerzugriffen geachtet, da einige Register nur bestimmte Schreib- oder Leseoperationen erlauben.
-\\\\
-\includegraphics[width=\textwidth]{./Zugriffe.png}
-\\\\
-\includegraphics[width=\textwidth]{./ISR.png}
-\\\\
-Hier fällt z.b beim Register ISR des ADCs auf, dass die Flag mittels Schreibzugriff mit einer 1 gelöscht werden müssen.
-\clearpage
-\subsection{ADC-Configuration}
-Der ADC wurde folgendermaßen konfiguriert:
-\begin{itemize}
-  \item Clock: PCLK/4 (12MHz)
-  \item Sampling Time: 239.5 ADC clock cycles for Temp-Sensor
-  \item Channels: Temp-Sensor
-  \item Resolution: 12 Bit
-  \item Data Alignment: Right
-  \item Trigger: Software - no Hardware Trigger
-  \item Continous Conversion Mode: Disabled
-  \item Continuous Mode: Disabled
-\end{itemize}
+\subsection{Wofür wird FAULT QUEUE verwendet?}
+Die \textit{Fault Queue} dient als Filter, um Fehlauslösungen des \texttt{ALERT}-Pins zu reduzieren. Dazu muss die gemessene Temperatur \(T_A\) für eine einstellbare Anzahl aufeinanderfolgender Wandlungszyklen oberhalb von \(T_{SET}\) liegen, bevor \texttt{ALERT} aktiviert wird. Entsprechend muss \(T_A\) auch für die eingestellte Anzahl von Zyklen unterhalb von \(T_{HYST}\) liegen, bevor \texttt{ALERT} wieder deaktiviert wird bzw. ein neuer Interrupt ausgelöst werden kann.
 
-Die Funktion zur Berechnung der Temperatur aus dem ADC-Wert wurde aus dem Reference Manual übernommen und in die Datei \texttt{ADC\_Temp\_prj.c} eingefügt. 
+\subsection{Wie viele Temperatursensoren können parallel maximal am I2C-Bus betrieben werden?}
+Am I\textsuperscript{2}C-Bus können maximal \textbf{acht} MCP9800/1/2/3-Sensoren parallel betrieben werden, da es \textbf{3} adressierbare Pins (A0, A1, A2) gibt, die jeweils mit GND oder VDD verbunden werden können. Dadurch ergeben sich \(2^3 = 8\) mögliche Adresskombinationen für die Sensoren.
+\\\\
+\includegraphics[width=0.5\textwidth]{./Images/SlaveAdr.png}
 \\
-Die Temperatur berechnet sich gemäß dem im STM32F0-Reference Manual wie folgt:
-
-\[
-T = 
-\left(
-    \frac{\text{ADC}_{\text{raw}} \cdot V_{\text{DD,appl}}}{V_{\text{DD,cal}}}
-    - \text{TS}_{30}
-\right)
-\cdot
-\frac{T_{\text{cal,high}} - T_{\text{cal,low}}}
-     {\text{TS}_{110} - \text{TS}_{30}}
-\; + \;
-T_{\text{cal,low}}
-\]
-
-wobei:
-
-\[
-\begin{aligned}
-\text{ADC}_{\text{raw}} &= \text{ADC1 DR}, \\
-V_{\text{DD,appl}} &= 330 \text{ (mV)},\\
-V_{\text{DD,cal}} &= 330 \text{ (mV)},\\
-T_{\text{cal,high}} &= 110^\circ\text{C},\\
-T_{\text{cal,low}} &= 30^\circ\text{C},\\
-\text{TS}_{110} &= *\text{TEMP110\_CAL\_ADDR},\\
-\text{TS}_{30} &= *\text{TEMP30\_CAL\_ADDR}.
-\end{aligned}
-\]
+\subsection{Welche Auflösung des Sensors ist nach dem Reset eingestellt?}
+Nach dem Reset bzw. nach Power-up ist standardmäßig eine Auflösung von \textbf{9 Bit} eingestellt. Das entspricht einer Temperaturauflösung von \textbf{0{,}5\,$^\circ$C}.
+\\\\
+\includegraphics[width=0.5\textwidth]{./Images/Default_Resolution.png}
+\\
+\subsection{Wozu kann der One-Shot Mode verwendet werden?}
+Der \textit{One-Shot Mode} wird für \textbf{stromsparende Anwendungen} verwendet. In diesem Modus führt der Sensor auf Anforderung genau \textbf{eine einzelne Temperaturmessung} durch und kehrt danach automatisch wieder in den \textit{Shutdown Mode} zurück. Das ist besonders nützlich, wenn die Temperatur nur gelegentlich und gezielt durch einen Controller abgefragt werden soll.
+\newpage
 
 
+\section{Funktionsbeschreibung}
+Im Projekt wird die aktuelle Temperatur über I2C vom MCP9800 Sensor ausgelesen und auf einem LCD-Display angezeigt. Zusätzlich wird ein Alarm ausgelöst, wenn die gemessene Temperatur den eingestellten Schwellenwert überschreitet. Der \texttt{ALERT}-Pin des Sensors ist mit einem externen Interrupt verbunden, der bei Aktivierung eine LED einschaltet, um den Alarm visuell anzuzeigen. Die Temperaturwerte werden kontinuierlich aktualisiert.
+Bei aktivem Alarm (Temperatur über \(T_{SET}\)) leuchtet die LED4 auf, und bei Rückkehr unter \(T_{HYST}\) erlischt sie wieder. 
+\subsection{MCP Driver}
+Der Treiber für den MCP9800 Temperatursensor baut auf den I2C Treiber auf.
+Dieser ist so ausgelegt, dass mehrere Sensoren parallel am I2C-Bus betrieben werden können.
+Dazu muss für jeden Sensor ein eigener Handle angelegt werden.
+Im Handle werden im Bereich \textbf{init} der Initialisierungszustand des MCP9800 gesetzt und anschließend mit der Funktion \texttt{MCP9800\_Temp\_Init} initialisiert.
+Bei jedem Aufruf einer Treiber Funktion ist der entsprechende Handle zu übergeben.
+Status der Funktion wird über den Rückgabewert der Funktion zurückgegeben.
+Hier wird die I2C\_RetType verwendet, um Fehler zu erkennen und entsprechend zu reagieren.
+
+\subsection{Bild vom Display}
+\includegraphics[height = 10cm]{./Images/Display.jpeg}
+\\
 \clearpage
+
+\section{Code}
 
 \subsection{main.c}
 \lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/projects/Demo/main.c}
 \newpage
-\subsection{ADC\_Temp\_prj.h}
-\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/proj/ADC_TEMP_SENS/ADC_Temp_prj.h}
-\subsection{ADC\_Temp\_prj.c}
-\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/proj/ADC_TEMP_SENS/ADC_Temp_prj.c}
+\subsection{i2c\_temp.h}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/proj/I2C_Temp/i2c_temp.h}
+\newpage
+\subsection{i2c\_temp.c}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/proj/I2C_Temp/i2c_temp.c}
 \newpage
 \section{Module}
-\subsection{board\_adc.h}
-\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/board_adc.h}
-\subsection{board\_adc.c}
-\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/board_adc.c}
+\subsection{board\_i2c.h}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/i2c.h}
 \newpage
-\subsection{board\_led.h}
-\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/board_led.h}
+\subsection{board\_i2c.c}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/i2c.c}
 \newpage
-\subsection{board\_led.c}
-\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/board_led.c}
+\subsection{board\_MCP\_temp.h}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/board_MCP_temp.h}
+\newpage
+\subsection{board\_MCP\_temp.c}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/board_MCP_temp.c}
 \end{document}
