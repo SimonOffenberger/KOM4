@@ -1,0 +1,12 @@
+*** Using Compiler 'V6.22', folder: 'C:\Users\Simon\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'APUS'
+compiling Interrupt_Proj.c...
+linking...
+.\Objects\LED.axf: Error: L6200E: Symbol Timer_IT_Initialize multiply defined (by timer_it.o and interrupt_proj.o).
+.\Objects\LED.axf: Error: L6200E: Symbol TIM3_IRQHandler multiply defined (by timer_it.o and interrupt_proj.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 2 error messages.
+".\Objects\LED.axf" - 2 Error(s), 0 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:00

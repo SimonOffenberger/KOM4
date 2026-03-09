@@ -1,0 +1,54 @@
+Dependencies for Project 'LED', Target 'APUS': (DO NOT MODIFY !)
+CompilerVersion: 6220000::V6.22::ARMCLANG
+F (..\..\system\stm32f0-stdperiph\stm32f0xx_gpio.c)(0x68DB71A1)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./ -I ../../system/cmsis -I ../../system/stm32f0-stdperiph -I ../../system/board -I ../../system/utils -I ../../system/board -I "../../system/proj/3Bit CNT"-IC:/Users/Simon/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/3.1.1/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="541" -DSTM32F072xB-o ./objects/stm32f0xx_gpio.o -MMD)
+I (stm32f0xx_conf.h)(0x68DB71A1)
+I (..\..\system\stm32f0-stdperiph\stm32f0xx_gpio.h)(0x68DB71A1)
+I (..\..\system\cmsis\stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\cmsis\core_cm0.h)(0x68DB71A1)
+I (..\..\system\cmsis\system_stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\stm32f0-stdperiph\stm32f0xx_rcc.h)(0x68DB71A1)
+F (..\..\system\stm32f0-stdperiph\stm32f0xx_rcc.c)(0x68DB71A1)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./ -I ../../system/cmsis -I ../../system/stm32f0-stdperiph -I ../../system/board -I ../../system/utils -I ../../system/board -I "../../system/proj/3Bit CNT"-IC:/Users/Simon/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/3.1.1/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="541" -DSTM32F072xB-o ./objects/stm32f0xx_rcc.o -MMD)
+I (stm32f0xx_conf.h)(0x68DB71A1)
+I (..\..\system\stm32f0-stdperiph\stm32f0xx_gpio.h)(0x68DB71A1)
+I (..\..\system\cmsis\stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\cmsis\core_cm0.h)(0x68DB71A1)
+I (..\..\system\cmsis\system_stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\stm32f0-stdperiph\stm32f0xx_rcc.h)(0x68DB71A1)
+F (..\..\system\cmsis\system_stm32f0xx.c)(0x68DB71A1)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./ -I ../../system/cmsis -I ../../system/stm32f0-stdperiph -I ../../system/board -I ../../system/utils -I ../../system/board -I "../../system/proj/3Bit CNT"-IC:/Users/Simon/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/3.1.1/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="541" -DSTM32F072xB-o ./objects/system_stm32f0xx.o -MMD)
+I (..\..\system\cmsis\stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\cmsis\core_cm0.h)(0x68DB71A1)
+I (..\..\system\cmsis\system_stm32f0xx.h)(0x68DB71A1)
+F (..\..\system\cmsis\startup_stm32f072.s)(0x68DF99FC)(--cpu Cortex-M0 -g --diag_suppress=A1950W-IC:\Users\Simon\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\3.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include--pd "__UVISION_VERSION SETA 541"--pd "STM32F072xB SETA 1"--list .\listings\startup_stm32f072.lst--xref -o .\objects\startup_stm32f072.o--depend .\objects\startup_stm32f072.d)
+F (.\stm32f0xx_conf.h)(0x68DB71A1)()
+F (.\main.c)(0x68EDF843)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./ -I ../../system/cmsis -I ../../system/stm32f0-stdperiph -I ../../system/board -I ../../system/utils -I ../../system/board -I "../../system/proj/3Bit CNT"-IC:/Users/Simon/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/3.1.1/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="541" -DSTM32F072xB-o ./objects/main.o -MMD)
+I (stm32f0xx_conf.h)(0x68DB71A1)
+I (..\..\system\stm32f0-stdperiph\stm32f0xx_gpio.h)(0x68DB71A1)
+I (..\..\system\cmsis\stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\cmsis\core_cm0.h)(0x68DB71A1)
+I (..\..\system\cmsis\system_stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\stm32f0-stdperiph\stm32f0xx_rcc.h)(0x68DB71A1)
+I (..\..\system\utils\sysdelay.h)(0x68DB71A1)
+I (..\..\system\proj\3Bit CNT\3bit_cnt.h)(0x68EDF83D)
+F (..\..\system\proj\3Bit CNT\3bit_cnt.c)(0x68EDF850)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./ -I ../../system/cmsis -I ../../system/stm32f0-stdperiph -I ../../system/board -I ../../system/utils -I ../../system/board -I "../../system/proj/3Bit CNT"-IC:/Users/Simon/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/3.1.1/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="541" -DSTM32F072xB-o ./objects/3bit_cnt.o -MMD)
+I (..\..\system\stm32f0-stdperiph\stm32f0xx_gpio.h)(0x68DB71A1)
+I (..\..\system\cmsis\stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\cmsis\core_cm0.h)(0x68DB71A1)
+I (..\..\system\cmsis\system_stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\board\board_led.h)(0x68EDE4BA)
+I (..\..\system\board\board_button.h)(0x68EDF852)
+I (..\..\system\proj\3Bit CNT\3bit_cnt.h)(0x68EDF83D)
+I (..\..\system\utils\sysdelay.h)(0x68DB71A1)
+F (..\..\system\utils\sysdelay.c)(0x68DB71A1)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./ -I ../../system/cmsis -I ../../system/stm32f0-stdperiph -I ../../system/board -I ../../system/utils -I ../../system/board -I "../../system/proj/3Bit CNT"-IC:/Users/Simon/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/3.1.1/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="541" -DSTM32F072xB-o ./objects/sysdelay.o -MMD)
+I (..\..\system\utils\sysdelay.h)(0x68DB71A1)
+F (..\..\system\board\board_button.c)(0x68EDF7F8)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./ -I ../../system/cmsis -I ../../system/stm32f0-stdperiph -I ../../system/board -I ../../system/utils -I ../../system/board -I "../../system/proj/3Bit CNT"-IC:/Users/Simon/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/3.1.1/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="541" -DSTM32F072xB-o ./objects/board_button.o -MMD)
+I (..\..\system\stm32f0-stdperiph\stm32f0xx_gpio.h)(0x68DB71A1)
+I (..\..\system\cmsis\stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\cmsis\core_cm0.h)(0x68DB71A1)
+I (..\..\system\cmsis\system_stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\board\board_button.h)(0x68EDF852)
+F (..\..\system\board\board_led.c)(0x68EDF301)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./ -I ../../system/cmsis -I ../../system/stm32f0-stdperiph -I ../../system/board -I ../../system/utils -I ../../system/board -I "../../system/proj/3Bit CNT"-IC:/Users/Simon/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/3.1.1/Drivers/CMSIS/Device/ST/STM32F0xx/Include-D__UVISION_VERSION="541" -DSTM32F072xB-o ./objects/board_led.o -MMD)
+I (..\..\system\stm32f0-stdperiph\stm32f0xx_gpio.h)(0x68DB71A1)
+I (..\..\system\cmsis\stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\cmsis\core_cm0.h)(0x68DB71A1)
+I (..\..\system\cmsis\system_stm32f0xx.h)(0x68DB71A1)
+I (..\..\system\board\board_led.h)(0x68EDE4BA)

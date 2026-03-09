@@ -1,0 +1,111 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{pdfpages}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{lipsum}
+\usepackage{listings}
+\usepackage{pdflscape}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+
+\lstdefinestyle{cppstyle}{
+  language=C++,
+  basicstyle=\ttfamily\tiny,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green},
+  stringstyle=\color{red},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  breaklines=true,
+  frame=single
+}
+
+\begin{document}
+\includepdf[pages={1}] {MPT3_Uebung_8_Deckblatt.pdf}
+\newpage
+\section{Fragen}
+\subsection{Wie würde eine Auswertung der ADC-Werte im Continuous Mode in Software ablaufen?}
+Hierbei müsste in der Configuration der Continous Mode aktiviert werden. Danach könnte in der Hauptschleife des Programms immer wieder geprüft werden, ob ein neuer ADC-Wert vorliegt (z.B. über das EOC-Flag). Wenn ja, wird der Wert aus dem ADC-Datenregister gelesen und ausgewertet. Da der ADC im Continuous Mode ständig neue Werte liefert, würde diese Schleife kontinuierlich laufen und der ADC müsste nicht neugestartet werden.
+\subsection{Wozu kann der ADC Watchdog verwendet werden?}
+Der ADC Watchdog kann verwendet werden, um den ADC-Wert kontinuierlich zu überwachen und sicherzustellen, dass er innerhalb eines vordefinierten Bereichs bleibt. Wenn der ADC-Wert außerhalb dieses Bereichs liegt, kann der Watchdog einen Interrupt auslösen oder eine andere Aktion initiieren. Dies ist besonders nützlich für Anwendungen, bei denen es wichtig ist, bestimmte Grenzwerte nicht zu überschreiten, wie z.B. bei der Überwachung von Sensorwerten in sicherheitskritischen Systemen.
+\newpage
+\section{Quellcode}
+In der Initialisierungsfunktion des ADCs wurde besonders auf die Einhaltung der richtigen Registerzugriffen geachtet, da einige Register nur bestimmte Schreib- oder Leseoperationen erlauben.
+\\\\
+\includegraphics[width=\textwidth]{./Zugriffe.png}
+\\\\
+\includegraphics[width=\textwidth]{./ISR.png}
+\\\\
+Hier fällt z.b beim Register ISR des ADCs auf, dass die Flag mittels Schreibzugriff mit einer 1 gelöscht werden müssen.
+\clearpage
+\subsection{ADC-Configuration}
+Der ADC wurde folgendermaßen konfiguriert:
+\begin{itemize}
+  \item Clock: PCLK/4 (12MHz)
+  \item Sampling Time: 239.5 ADC clock cycles for Temp-Sensor
+  \item Channels: Temp-Sensor
+  \item Resolution: 12 Bit
+  \item Data Alignment: Right
+  \item Trigger: Software - no Hardware Trigger
+  \item Continous Conversion Mode: Disabled
+  \item Continuous Mode: Disabled
+\end{itemize}
+
+Die Funktion zur Berechnung der Temperatur aus dem ADC-Wert wurde aus dem Reference Manual übernommen und in die Datei \texttt{ADC\_Temp\_prj.c} eingefügt. 
+\\
+Die Temperatur berechnet sich gemäß dem im STM32F0-Reference Manual wie folgt:
+
+\[
+T = 
+\left(
+    \frac{\text{ADC}_{\text{raw}} \cdot V_{\text{DD,appl}}}{V_{\text{DD,cal}}}
+    - \text{TS}_{30}
+\right)
+\cdot
+\frac{T_{\text{cal,high}} - T_{\text{cal,low}}}
+     {\text{TS}_{110} - \text{TS}_{30}}
+\; + \;
+T_{\text{cal,low}}
+\]
+
+wobei:
+
+\[
+\begin{aligned}
+\text{ADC}_{\text{raw}} &= \text{ADC1 DR}, \\
+V_{\text{DD,appl}} &= 330 \text{ (mV)},\\
+V_{\text{DD,cal}} &= 330 \text{ (mV)},\\
+T_{\text{cal,high}} &= 110^\circ\text{C},\\
+T_{\text{cal,low}} &= 30^\circ\text{C},\\
+\text{TS}_{110} &= *\text{TEMP110\_CAL\_ADDR},\\
+\text{TS}_{30} &= *\text{TEMP30\_CAL\_ADDR}.
+\end{aligned}
+\]
+
+
+\clearpage
+
+\subsection{main.c}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/projects/Demo/main.c}
+\newpage
+\subsection{ADC\_Temp\_prj.h}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/proj/ADC_TEMP_SENS/ADC_Temp_prj.h}
+\subsection{ADC\_Temp\_prj.c}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/proj/ADC_TEMP_SENS/ADC_Temp_prj.c}
+\newpage
+\section{Module}
+\subsection{board\_adc.h}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/board_adc.h}
+\subsection{board\_adc.c}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/board_adc.c}
+\newpage
+\subsection{board\_led.h}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/board_led.h}
+\newpage
+\subsection{board\_led.c}
+\lstinputlisting[style=cppstyle]{./../STM32Base_Students/STM32Base/system/board/board_led.c}
+\end{document}
