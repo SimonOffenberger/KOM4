@@ -21,7 +21,7 @@
 #define LCD_TEXT_BUFFER_SIZE 32
 
 /** @brief Alert threshold temperature in degree Celsius. */
-#define TEMP_ALERT_THRESHOLD 28.5f
+#define TEMP_ALERT_THRESHOLD  28.5f
 /** @brief Alert hysteresis temperature in degree Celsius. */
 #define TEMP_ALERT_HYSTERESIS 27.0f
 
