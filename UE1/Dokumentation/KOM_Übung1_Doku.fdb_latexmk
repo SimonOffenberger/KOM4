@@ -1,12 +1,12 @@
 # Fdb version 4
-["pdflatex"] 1773076526.01482 "c:/Repos/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex" "KOM_Übung1_Doku.pdf" "KOM_Übung1_Doku" 1773076526.93891 0
+["pdflatex"] 1773161331.54614 "c:/HSD_SEM_4/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex" "KOM_Übung1_Doku.pdf" "KOM_Übung1_Doku" 1773161332.50298 0
   "../STM32Base_Students/STM32Base/projects/Demo/main.c" 1773040079 1959 b14e8b4ed43b10ecbdbe17bb51f5746a ""
-  "../STM32Base_Students/STM32Base/system/board/board_MCP_temp.c" 1773073296 4217 4e1210c791f78614d81bb555a7719d64 ""
-  "../STM32Base_Students/STM32Base/system/board/board_MCP_temp.h" 1773073364 4126 28aed0b031ef4ea2766865fcfc027b7c ""
-  "../STM32Base_Students/STM32Base/system/board/i2c.c" 1773076525 8410 438a01dde9867e920d0a0cf8d0c0ace2 ""
+  "../STM32Base_Students/STM32Base/system/board/board_MCP_temp.c" 1773160402 4401 7774d3aac6cbb0fe4989f3c7347cce6d ""
+  "../STM32Base_Students/STM32Base/system/board/board_MCP_temp.h" 1773159743 4143 a0bc8df7a355738be793ae9c36c5d52b ""
+  "../STM32Base_Students/STM32Base/system/board/i2c.c" 1773159896 8459 bbfbb9159f09adf40d9598cfe86c0aa0 ""
   "../STM32Base_Students/STM32Base/system/board/i2c.h" 1773073373 2386 274ee090435df294df7de2d00669ba30 ""
-  "../STM32Base_Students/STM32Base/system/proj/I2C_Temp/i2c_temp.c" 1773076190 4198 1c9c123ba1d43de9f1c3f77945a3c778 ""
-  "../STM32Base_Students/STM32Base/system/proj/I2C_Temp/i2c_temp.h" 1773073731 861 c24ec52df75e12b8a1c9594e30346b0a ""
+  "../STM32Base_Students/STM32Base/system/proj/I2C_Temp/i2c_temp.c" 1773161194 4173 da214b2535b203aba88377a32441a412 ""
+  "../STM32Base_Students/STM32Base/system/proj/I2C_Temp/i2c_temp.h" 1773161203 857 627aee79ee29d1f38bded7fef16e4c43 ""
   "C:/Users/Simon/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1768386022 82686 2381c3433487640bf26aa76a10db7eb2 ""
   "C:/Users/Simon/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1741704715 24225046 95b13932df786324b1c77e39fb2e72fd ""
   "C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -92,9 +92,9 @@
   "Images/Display.jpeg" 1773075017 290811 988aa66cb75e154b8379a2b33dcafe5d ""
   "Images/SlaveAdr.png" 1773074691 55166 6e098aec6a32be63446219b3cc2a29c7 ""
   "KOM4_Uebung_1_Deckblatt.pdf" 1773072951 202780 6582ebc66986df307f68729dd7b021e4 ""
-  "KOM_Übung1_Doku.aux" 1773076526 3142 15002fc727f7fb75e4f3f6435f594d97 "pdflatex"
-  "KOM_Übung1_Doku.tex" 1773075825 4859 65e0f2ce52909d0dd68123e3b983c76a ""
-  "c:/Repos/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex" 1773075825 4859 65e0f2ce52909d0dd68123e3b983c76a ""
+  "KOM_Übung1_Doku.aux" 1773161332 3142 15002fc727f7fb75e4f3f6435f594d97 "pdflatex"
+  "KOM_Übung1_Doku.tex" 1773161330 5150 9a1198859b0102cc9fb595aebd2a2f31 ""
+  "c:/HSD_SEM_4/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex" 1773161330 5150 9a1198859b0102cc9fb595aebd2a2f31 ""
   (generated)
   "KOM_Übung1_Doku.aux"
   "KOM_Übung1_Doku.log"

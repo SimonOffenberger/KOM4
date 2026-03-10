@@ -21,7 +21,7 @@
  * @param  handle Pointer to MCP9800 handle structure.
  * @return I2C status.
  */
-I2C_RetType MCP9800_Temp_Init(MCP9800_Temp_HandleTypeDef *handle)
+I2C_RetType MCP9800_Temp_Init(MCP9800_Temp_HandleTypeDef * handle)
 {
 
   if (handle == 0)
@@ -44,7 +44,7 @@ I2C_RetType MCP9800_Temp_Init(MCP9800_Temp_HandleTypeDef *handle)
     return retval;
   }
 
-  const uint8_t sendData[2] = {MCP_REG_CONFIG, config_reg};
+  const uint8_t sendData[] = {MCP_REG_CONFIG, config_reg};
 
   retval = I2C_Write(handle->i2c_handle, handle->adr, sendData, sizeof(sendData) / sizeof(sendData[0]));
 
@@ -57,17 +57,17 @@ I2C_RetType MCP9800_Temp_Init(MCP9800_Temp_HandleTypeDef *handle)
  * @param  temp Pointer to destination temperature in degree Celsius.
  * @return I2C status.
  */
-I2C_RetType MCP9800_Temp_ReadTemp(MCP9800_Temp_HandleTypeDef *handle, float *temp)
+I2C_RetType MCP9800_Temp_ReadTemp(MCP9800_Temp_HandleTypeDef *handle, float * const temp)
 {
   if (handle == 0 || temp == 0)
   {
     return I2C_ERR_INVALID_PARAM;
   }
   uint8_t recData[NUM_OF_TEMP_BYTES];
-  uint8_t sendData = MCP_REG_TEMP;
+  const uint8_t sendData = MCP_REG_TEMP;
 
   // Write temperature register address, then read back 2 bytes with repeated START.
-  I2C_RetType ret = I2C_WriteRead(handle->i2c_handle, handle->adr, &sendData, 1, (uint8_t *)&recData, sizeof(recData) / sizeof(recData[0]));
+  I2C_RetType ret = I2C_WriteRead(handle->i2c_handle, handle->adr, &sendData, 1,recData, sizeof(recData) / sizeof(recData[0]));
 
   if (ret != I2C_OK)
   {
@@ -75,7 +75,13 @@ I2C_RetType MCP9800_Temp_ReadTemp(MCP9800_Temp_HandleTypeDef *handle, float *tem
   }
 
   // MCP9800 temperature format is Q8.8, convert raw value to degree Celsius.
-  *temp = ((float)(recData[0] << 8 | recData[1])) / INT_FLOAT_CONV;
+  // The MSB contains the sign bit and the integer part.
+  *temp = (((float)((recData[0] & 0x7F) << 8 | recData[1])) / INT_FLOAT_CONV);
+
+  // Handle sign bit (bit 15) for negative temperatures.
+  if((recData[0] & ONLY_MSB_BIT))  {
+    *temp *= -1;
+  }
 
   return ret;
 }
@@ -86,17 +92,17 @@ I2C_RetType MCP9800_Temp_ReadTemp(MCP9800_Temp_HandleTypeDef *handle, float *tem
  * @param  temp Temperature limit in degree Celsius.
  * @return I2C status.
  */
-I2C_RetType MCP9800_Temp_Set_TSET(MCP9800_Temp_HandleTypeDef *handle, float temp)
+I2C_RetType MCP9800_Temp_Set_TSET(MCP9800_Temp_HandleTypeDef *handle,const float temp)
 {
 
-  if (handle == 0 || temp == 0)
+  if (handle == 0)
   {
     return I2C_ERR_INVALID_PARAM;
   }
 
-  uint16_t temp_int = (uint16_t)(temp * INT_FLOAT_CONV);
+  const uint16_t temp_int = (uint16_t)(temp * INT_FLOAT_CONV);
   // THYST/TSET use MSB plus bit7 of LSB according to MCP9800 register format.
-  const uint8_t sendData[3] = {MCP_REG_LIMIT, (temp_int >> 8) & 0xFF, temp_int & ONLY_MSB_BIT};
+  const uint8_t sendData[] = {MCP_REG_LIMIT, (temp_int >> 8) & 0xFF, temp_int & ONLY_MSB_BIT};
 
   return I2C_Write(handle->i2c_handle, handle->adr, sendData, sizeof(sendData) / sizeof(sendData[0]));
 }
@@ -107,16 +113,16 @@ I2C_RetType MCP9800_Temp_Set_TSET(MCP9800_Temp_HandleTypeDef *handle, float temp
  * @param  temp Hysteresis temperature in degree Celsius.
  * @return I2C status.
  */
-I2C_RetType MCP9800_Temp_Set_THYST(MCP9800_Temp_HandleTypeDef *handle, float temp)
+I2C_RetType MCP9800_Temp_Set_THYST(MCP9800_Temp_HandleTypeDef *handle,const float temp)
 {
-  if (handle == 0 || temp == 0)
+  if (handle == 0)
   {
     return I2C_ERR_INVALID_PARAM;
   }
 
-  uint16_t temp_int = (uint16_t)(temp * INT_FLOAT_CONV);
+  const uint16_t temp_int = (uint16_t)(temp * INT_FLOAT_CONV);
   // THYST/TSET use MSB plus bit7 of LSB according to MCP9800 register format.
-  const uint8_t sendData[3] = {MCP_REG_HYSTERESIS, (temp_int >> 8) & 0xFF, temp_int & ONLY_MSB_BIT};
+  const uint8_t sendData[] = {MCP_REG_HYSTERESIS, (temp_int >> 8) & 0xFF, temp_int & ONLY_MSB_BIT};
 
   return I2C_Write(handle->i2c_handle, handle->adr, sendData, sizeof(sendData) / sizeof(sendData[0]));
 }

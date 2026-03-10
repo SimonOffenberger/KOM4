@@ -1,5 +1,5 @@
 /**
- * @file I2C_Temp_prj.h
+ * @file i2c_temp.h
  * @author Simon Offenberger
  * @brief I2C Temperature Sensor Project which indicates a Alert via LED4 and shows the current temperature on the LCD.
  * @version 1.0

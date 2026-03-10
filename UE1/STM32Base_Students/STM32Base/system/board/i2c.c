@@ -21,7 +21,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
-static int32_t I2C_WaitForFlagOrNackToBeSet(I2C_TypeDef *I2C_Handle, uint32_t flag);
+static int32_t I2C_WaitForFlagOrNackToBeSet(I2C_TypeDef *I2C_Handle,const uint32_t flag);
 
 /**
  * @brief  Initialize I2C including GPIO ports.
@@ -81,7 +81,7 @@ I2C_RetType I2C_Write(I2C_TypeDef *I2C_Handle, const uint16_t slave_address, con
     int32_t ret = 0;
 
     /* null pointer check */
-    if (sendData == 0 || bytesToSend == 0)
+    if (I2C_Handle == 0 || sendData == 0 || bytesToSend == 0)
     {
         return I2C_ERR_INVALID_PARAM;
     }
@@ -139,7 +139,7 @@ I2C_RetType I2C_WriteRead(I2C_TypeDef *I2C_Handle, const uint16_t slave_address,
     int32_t ret = 0;
 
     /* null pointer check */
-    if (sendData == 0 || recData == 0 || bytesToRead == 0 || bytesToSend == 0)
+    if (I2C_Handle == 0 || sendData == 0 || recData == 0 || bytesToRead == 0 || bytesToSend == 0)
     {
         return I2C_ERR_INVALID_PARAM;
     }
@@ -211,7 +211,7 @@ I2C_RetType I2C_WriteRead(I2C_TypeDef *I2C_Handle, const uint16_t slave_address,
 }
 
 /* Private functions ---------------------------------------------------------*/
-static int32_t I2C_WaitForFlagOrNackToBeSet(I2C_TypeDef *I2C_Handle, uint32_t flag)
+static int32_t I2C_WaitForFlagOrNackToBeSet(I2C_TypeDef *I2C_Handle, const uint32_t flag)
 {
     if(I2C_Handle == 0)
     {

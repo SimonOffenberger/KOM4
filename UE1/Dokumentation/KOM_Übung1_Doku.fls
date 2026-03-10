@@ -1,6 +1,6 @@
-PWD c:\Repos\KOM4\UE1\Dokumentation
+PWD c:\HSD_SEM_4\KOM4\UE1\Dokumentation
 INPUT C:\Users\Simon\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Repos\KOM4\UE1\Dokumentation\KOM_Übung1_Doku.tex
+INPUT c:\HSD_SEM_4\KOM4\UE1\Dokumentation\KOM_Übung1_Doku.tex
 OUTPUT KOM_Übung1_Doku.log
 INPUT C:\Users\Simon\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\Simon\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls

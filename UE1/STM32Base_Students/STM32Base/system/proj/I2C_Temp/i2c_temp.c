@@ -1,5 +1,5 @@
 /**
- * @file I2C_Temp_prj.c
+ * @file i2c_temp.c
  * @author Simon Offenberger
  * @brief I2C Temperature Sensor Project which indicates a Alert via LED4 and shows the current temperature on the LCD.
  * @version 1.0
@@ -14,7 +14,6 @@
 #include "i2c_temp.h"
 #include "board_MCP_temp.h"
 #include "Lcd.h"
-#include <stdlib.h>
 #include <stdio.h>
 
 // includes for STM32F0xx Standard Peripheral Library

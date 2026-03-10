@@ -49,11 +49,13 @@ Der \textit{One-Shot Mode} wird für \textbf{stromsparende Anwendungen} verwende
 \section{Funktionsbeschreibung}
 Im Projekt wird die aktuelle Temperatur über I2C vom MCP9800 Sensor ausgelesen und auf einem LCD-Display angezeigt. Zusätzlich wird ein Alarm ausgelöst, wenn die gemessene Temperatur den eingestellten Schwellenwert überschreitet. Der \texttt{ALERT}-Pin des Sensors ist mit einem externen Interrupt verbunden, der bei Aktivierung eine LED einschaltet, um den Alarm visuell anzuzeigen. Die Temperaturwerte werden kontinuierlich aktualisiert.
 Bei aktivem Alarm (Temperatur über \(T_{SET}\)) leuchtet die LED4 auf, und bei Rückkehr unter \(T_{HYST}\) erlischt sie wieder. 
+Die Einstellung von \(T_{SET}\) und \(T_{HYST}\) erfolgt über das \textbf{i2c\_temp.h} File.
 \subsection{MCP Driver}
 Der Treiber für den MCP9800 Temperatursensor baut auf den I2C Treiber auf.
 Dieser ist so ausgelegt, dass mehrere Sensoren parallel am I2C-Bus betrieben werden können.
 Dazu muss für jeden Sensor ein eigener Handle angelegt werden.
 Im Handle werden im Bereich \textbf{init} der Initialisierungszustand des MCP9800 gesetzt und anschließend mit der Funktion \texttt{MCP9800\_Temp\_Init} initialisiert.
+Die Initialisierung ist mittels Enumerationen der einstellbaren Parameter realisiert, dies ermöglicht eine einfache Typprüfung des Compilers und verhindert ungültige Werte für die Parameter.
 Bei jedem Aufruf einer Treiber Funktion ist der entsprechende Handle zu übergeben.
 Status der Funktion wird über den Rückgabewert der Funktion zurückgegeben.
 Hier wird die I2C\_RetType verwendet, um Fehler zu erkennen und entsprechend zu reagieren.

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.3.11)  9 MAR 2026 18:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.3.11)  10 MAR 2026 17:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Repos/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex
-(c:/Repos/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex
+**c:/HSD_SEM_4/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex
+(c:/HSD_SEM_4/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
 (C:\Users\Simon\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -447,17 +447,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--44
  []
 
 [2{C:/Users/Simon/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Images/SlaveAdr.png> <./Images/Default_Resolution.png>]
-Overfull \hbox (26.55295pt too wide) in paragraph at lines 53--60
-\OT1/cmr/m/n/12 Han-dle zu ^^?ubergeben. Sta-tus der Funk-tion wird ^^?uber den R^^?uckgabewert der Funk-tion zur^^?uckgegeben.
- []
-
 <./Images/Display.jpeg, id=66, 1204.5pt x 1606.0pt>
 File: ./Images/Display.jpeg Graphic file (type jpg)
 <use ./Images/Display.jpeg>
-Package pdftex.def Info: ./Images/Display.jpeg  used on input line 62.
+Package pdftex.def Info: ./Images/Display.jpeg  used on input line 64.
 (pdftex.def)             Requested size: 213.38211pt x 284.52756pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--64
+Underfull \hbox (badness 10000) in paragraph at lines 64--66
 
  []
 
@@ -477,14 +473,14 @@ L3 programming layer <2024-01-04>
  ) 
 Here is how much of TeX's memory you used:
  11243 strings out of 474486
- 240936 string characters out of 5743755
- 2623542 words of memory out of 5000000
+ 240998 string characters out of 5743755
+ 2628542 words of memory out of 5000000
  33395 multiletter control sequences out of 15000+600000
  563681 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,17n,93p,564b,1791s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,17n,93p,568b,1791s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on KOM_Übung1_Doku.pdf (15 pages, 742137 bytes).
+Output written on KOM_Übung1_Doku.pdf (15 pages, 742650 bytes).
 PDF statistics:
  152 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
