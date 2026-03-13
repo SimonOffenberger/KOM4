@@ -1,12 +1,12 @@
 # Fdb version 4
-["pdflatex"] 1773163622.42824 "c:/HSD_SEM_4/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex" "KOM_Übung1_Doku.pdf" "KOM_Übung1_Doku" 1773163623.35891 0
+["pdflatex"] 1773392522.96646 "c:/HSD_SEM_4/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex" "KOM_Übung1_Doku.pdf" "KOM_Übung1_Doku" 1773392523.89741 0
   "../STM32Base_Students/STM32Base/projects/Demo/main.c" 1773040079 1959 b14e8b4ed43b10ecbdbe17bb51f5746a ""
-  "../STM32Base_Students/STM32Base/system/board/board_MCP_temp.c" 1773163622 5215 6f3a708fcdcca916b760f9b136b25b50 ""
-  "../STM32Base_Students/STM32Base/system/board/board_MCP_temp.h" 1773162990 4235 c14fd35980cff0da14731993f7b24029 ""
+  "../STM32Base_Students/STM32Base/system/board/board_MCP_temp.c" 1773391801 4537 3d102604d327f377b1a1e3ecf7733fdf ""
+  "../STM32Base_Students/STM32Base/system/board/board_MCP_temp.h" 1773392301 4245 a12940957131cc3f9a76d91196f7c2a0 ""
   "../STM32Base_Students/STM32Base/system/board/i2c.c" 1773159896 8459 bbfbb9159f09adf40d9598cfe86c0aa0 ""
   "../STM32Base_Students/STM32Base/system/board/i2c.h" 1773073373 2386 274ee090435df294df7de2d00669ba30 ""
-  "../STM32Base_Students/STM32Base/system/proj/I2C_Temp/i2c_temp.c" 1773161194 4173 da214b2535b203aba88377a32441a412 ""
-  "../STM32Base_Students/STM32Base/system/proj/I2C_Temp/i2c_temp.h" 1773163423 858 9a8c35d97819aebfabc396d43a47e191 ""
+  "../STM32Base_Students/STM32Base/system/proj/I2C_Temp/i2c_temp.c" 1773391888 4175 2436fe4d0842d184c718e915a4fcb95e ""
+  "../STM32Base_Students/STM32Base/system/proj/I2C_Temp/i2c_temp.h" 1773392522 858 9a8c35d97819aebfabc396d43a47e191 ""
   "C:/Users/Simon/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1768386022 82686 2381c3433487640bf26aa76a10db7eb2 ""
   "C:/Users/Simon/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1741704715 24225046 95b13932df786324b1c77e39fb2e72fd ""
   "C:/Users/Simon/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -92,9 +92,9 @@
   "Images/Display.jpeg" 1773075017 290811 988aa66cb75e154b8379a2b33dcafe5d ""
   "Images/SlaveAdr.png" 1773074691 55166 6e098aec6a32be63446219b3cc2a29c7 ""
   "KOM4_Uebung_1_Deckblatt.pdf" 1773072951 202780 6582ebc66986df307f68729dd7b021e4 ""
-  "KOM_Übung1_Doku.aux" 1773163623 3142 15002fc727f7fb75e4f3f6435f594d97 "pdflatex"
-  "KOM_Übung1_Doku.tex" 1773161330 5150 9a1198859b0102cc9fb595aebd2a2f31 ""
-  "c:/HSD_SEM_4/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex" 1773161330 5150 9a1198859b0102cc9fb595aebd2a2f31 ""
+  "KOM_Übung1_Doku.aux" 1773392523 3142 15002fc727f7fb75e4f3f6435f594d97 "pdflatex"
+  "KOM_Übung1_Doku.tex" 1773392030 5148 4f8c389ebccfef9fdbbeb712b3c392c7 ""
+  "c:/HSD_SEM_4/KOM4/UE1/Dokumentation/KOM_Übung1_Doku.tex" 1773392030 5148 4f8c389ebccfef9fdbbeb712b3c392c7 ""
   (generated)
   "KOM_Übung1_Doku.aux"
   "KOM_Übung1_Doku.log"

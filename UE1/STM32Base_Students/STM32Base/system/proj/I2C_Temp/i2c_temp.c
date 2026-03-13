@@ -129,7 +129,7 @@ void main_I2C_Temp()
     char temp_str[LCD_TEXT_BUFFER_SIZE] = {0};
 
     // Update current temperature on LCD.
-    snprintf(temp_str, LCD_TEXT_BUFFER_SIZE, "Temperatur %3.1fC", temp);
+    snprintf(temp_str, LCD_TEXT_BUFFER_SIZE, "Temperatur %3.1fC  ", temp);
 
     Lcd_Print(0, 0, temp_str, RGB565_BLACK, RGB565_WHITE, &Consolas);
 

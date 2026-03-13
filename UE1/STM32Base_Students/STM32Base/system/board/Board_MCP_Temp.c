@@ -78,13 +78,9 @@ I2C_RetType MCP9800_Temp_ReadTemp(MCP9800_Temp_HandleTypeDef *handle, float * co
   }
 
   // MCP9800 temperature format is Q8.8, convert raw value to degree Celsius.
-  // The MSB contains the sign bit and the integer part.
-  *temp = (((float)((recData[0] & 0x7F) << 8 | recData[1])) / INT_FLOAT_CONV);
-
-  // Handle sign bit (bit 15) for negative temperatures.
-  if((recData[0] & ONLY_MSB_BIT))  {
-    *temp *= -1;
-  }
+  // The Temperature is in Twos complement format.
+  // first intepret the raw data as signed 16-bit integer, then divide by 256 to get the actual temperature.
+  *temp = (((float)((int16_t)((recData[0] & 0xFF) << 8 | recData[1]))) / INT_FLOAT_CONV);
 
   return ret;
 }
@@ -95,7 +91,7 @@ I2C_RetType MCP9800_Temp_ReadTemp(MCP9800_Temp_HandleTypeDef *handle, float * co
  * @param  temp Temperature limit in degree Celsius.
  * @return I2C status.
  */
-I2C_RetType MCP9800_Temp_Set_TSET(MCP9800_Temp_HandleTypeDef *handle, float temp)
+I2C_RetType MCP9800_Temp_Set_TSET(MCP9800_Temp_HandleTypeDef *handle,const float temp)
 {
 
   if (handle == 0 || temp < MCP_MIN_TEMP_CELSIUS || temp > MCP_MAX_TEMP_CELSIUS)
@@ -103,18 +99,7 @@ I2C_RetType MCP9800_Temp_Set_TSET(MCP9800_Temp_HandleTypeDef *handle, float temp
     return I2C_ERR_INVALID_PARAM;
   }
 
-  // Check if temperature is negative
-  bool is_negative = temp < 0;
-
-  if(is_negative){
-    temp = -temp; // MCP9800 uses a sign bit, so we convert the temperature to positive and set the sign bit later.
-  }
-
-  uint16_t temp_int = (uint16_t)(temp * INT_FLOAT_CONV);
-  
-  if(is_negative){
-    temp_int |= 1<<SIGN_BIT_POS; // Set sign bit for negative temperatures in MCP9800 format.
-  }
+  int16_t temp_int = (int16_t)(temp * INT_FLOAT_CONV);
 
   // THYST/TSET use MSB plus bit7 of LSB according to MCP9800 register format.
   const uint8_t sendData[] = {MCP_REG_LIMIT, (temp_int >> 8) & 0xFF, temp_int & ONLY_MSB_BIT};
@@ -128,25 +113,15 @@ I2C_RetType MCP9800_Temp_Set_TSET(MCP9800_Temp_HandleTypeDef *handle, float temp
  * @param  temp Hysteresis temperature in degree Celsius.
  * @return I2C status.
  */
-I2C_RetType MCP9800_Temp_Set_THYST(MCP9800_Temp_HandleTypeDef *handle, float temp)
+I2C_RetType MCP9800_Temp_Set_THYST(MCP9800_Temp_HandleTypeDef *handle,const float temp)
 {
   if (handle == 0 || temp < MCP_MIN_TEMP_CELSIUS || temp > MCP_MAX_TEMP_CELSIUS)
   {
     return I2C_ERR_INVALID_PARAM;
   }
 
-  // Check if temperature is negative
-  bool is_negative = temp < 0;
-
-  if(is_negative){
-    temp = -temp; // MCP9800 uses a sign bit, so we convert the temperature to positive and set the sign bit later.
-  }
-
-  uint16_t temp_int = (uint16_t)(temp * INT_FLOAT_CONV);
+  int16_t temp_int = (int16_t)(temp * INT_FLOAT_CONV);
   
-  if(is_negative){
-    temp_int |= 1<<SIGN_BIT_POS; // Set sign bit for negative temperatures in MCP9800 format.
-  }
   // THYST/TSET use MSB plus bit7 of LSB according to MCP9800 register format.
   const uint8_t sendData[] = {MCP_REG_HYSTERESIS, (temp_int >> 8) & 0xFF, temp_int & ONLY_MSB_BIT};
 

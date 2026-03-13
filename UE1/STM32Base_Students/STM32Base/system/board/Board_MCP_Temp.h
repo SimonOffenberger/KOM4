@@ -37,7 +37,7 @@
 #define SIGN_BIT_POS 15
 
 #define MCP_MAX_TEMP_CELSIUS 127.5f
-#define MCP_MIN_TEMP_CELSIUS -127.5f
+#define MCP_MIN_TEMP_CELSIUS -128.0f
 /* Exported types ------------------------------------------------------------*/
 /**
  * @brief  One-shot conversion mode.
@@ -144,7 +144,7 @@ I2C_RetType MCP9800_Temp_ReadTemp(MCP9800_Temp_HandleTypeDef *handle, float * co
  * @param  temp Hysteresis threshold in degree Celsius.
  * @return I2C status.
  */
-I2C_RetType MCP9800_Temp_Set_THYST(MCP9800_Temp_HandleTypeDef *handle, float temp);
+I2C_RetType MCP9800_Temp_Set_THYST(MCP9800_Temp_HandleTypeDef *handle,const float temp);
 
 /**
  * @brief  Sets alert temperature threshold.
@@ -152,6 +152,6 @@ I2C_RetType MCP9800_Temp_Set_THYST(MCP9800_Temp_HandleTypeDef *handle, float tem
  * @param  temp Alert threshold in degree Celsius.
  * @return I2C status.
  */
-I2C_RetType MCP9800_Temp_Set_TSET(MCP9800_Temp_HandleTypeDef *handle, float temp);
+I2C_RetType MCP9800_Temp_Set_TSET(MCP9800_Temp_HandleTypeDef *handle,const float temp);
 
 #endif
